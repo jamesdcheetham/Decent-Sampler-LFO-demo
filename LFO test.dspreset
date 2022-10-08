@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecentSampler pluginVersion="1">
+  <groups>
+    <group name="Pad" volume="0dB" tuning="0.0" ampVelTrack="1" tags="close">
+      <sample path="samples/kalimba-pad_C5.wav" volume="0.0dB" tuning="0.00" rootNote="72" loNote="0" hiNote="127" loVel="1" hiVel="127" loopEnabled="true"/>
+    </group>
+
+  </groups>
+
+  <ui>
+    <tab name="main">
+    
+       	<labeled-knob x="60" y="80" label="Volume" type="float" minValue="0" maxValue="1" value="0.8" textSize="16" width="120" height="120">
+    	<binding type="amp" level="tag" identifier="close" parameter="AMP_VOLUME" />
+		</control>
+
+      	<labeled-knob x="180" y="80" label="tone" type="float" minValue="0" maxValue="2000" value="12000" textSize="16" width="120" height="120">
+        <binding type="effect" level="instrument" effectIndex="0" parameter="FX_FILTER_FREQUENCY"/>
+		</labeled-knob>
+
+      	<labeled-knob x="300" y="80" label="LFO depth" type="float" minValue="0" maxValue="1.0" value="0"	textSize="16" width="120" height="120">
+        <binding type="modulator" level="instrument" modulatorIndex="0" parameter="MOD_AMOUNT"/>
+		</labeled-knob>
+		
+		<labeled-knob x="420" y="80" label="LFO speed" type="float" minValue="0.0" maxValue="2.0" value="1.0" textSize="16" width="120" height="120">
+        <binding type="modulator" level="instrument" modulatorIndex="0" parameter="FREQUENCY"/>
+		</labeled-knob>    
+ 
+		<labeled-knob x="540" y="80" label="attack" type="float" minValue="0.0" maxValue="2.0" value="0.002" textSize="16" width="120" height="120">
+        <binding type="amp" level="instrument" position="0" parameter="ENV_ATTACK" />
+		</labeled-knob>
+		
+		<labeled-knob x="660" y="80" label="release" type="float" minValue="0.0" maxValue="5.0" value="0.35" textSize="16" width="120" height="120">
+        <binding type="amp" level="instrument" position="0" parameter="ENV_RELEASE" />
+		</labeled-knob>
+      
+    </tab>
+  </ui>
+  
+  <effects>
+	<effect type="lowpass"/>
+	<effect type="lowpass"/>
+  </effects>
+  
+  <modulators>
+    <lfo shape="sine">
+        <binding type="effect" level="instrument" effectIndex="1" parameter="FX_FILTER_FREQUENCY" translation="linear" translationOutputMin="0" translationOutputMax="1000.0" modBehaviour="add" />
+    </lfo>
+  </modulators>
+
+</DecentSampler>
+
